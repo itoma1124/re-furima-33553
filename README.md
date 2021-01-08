@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル (Active Recordでimageを追加)
 | Column          | Type       | Options                        |
@@ -31,9 +31,9 @@
 
 ### Association
 - belongs_to :user
-- has_one :purchase
+- has_one :orders
 
-## purchases テーブル
+## orders テーブル
 | Column       | Type       | Options                        | 
 | ------------ | ---------- | ------------------------------ |
 | user         | references | null: false, foreign_key: true |
