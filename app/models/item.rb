@@ -3,14 +3,14 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :orders
   has_one_attached :image
-
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :category
-    belongs_to :fare
-    belongs_to :province
-    belongs_to :shipment_day
-    belongs_to :status
-
+  belongs_to :category
+  belongs_to :fare
+  belongs_to :province
+  belongs_to :shipment_day
+  belongs_to :status
+  
   
   #Validation
   validates :name, :detail, :image, presence: true
