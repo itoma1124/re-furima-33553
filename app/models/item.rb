@@ -1,20 +1,20 @@
 class Item < ApplicationRecord
-  #Association
+  # Association
   belongs_to :user
   has_one :orders
   has_one_attached :image
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :fare
   belongs_to :province
   belongs_to :shipment_day
   belongs_to :status
-  
-  
-  #Validation
+
+  # Validation
   validates :name, :detail, :image, presence: true
-  validates :price, presence: true,numericality: {only_integer: true, greater_than_or_equal_to:300, less_than_or_equal_to:9999999}
+  validates :price, presence: true,
+                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   with_options numericality: { other_than: 0 } do
     validates :category_id
