@@ -143,7 +143,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name kana 全角カナを使用してください")
     end
     it "生年月日がないと登録できない"do
-      @user.birthday_id = ""
+      @user.birthday = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
     end

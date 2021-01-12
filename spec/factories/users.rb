@@ -8,6 +8,6 @@ FactoryBot.define do
     first_name            {Gimei::first.kanji}
     family_name_kana      {Gimei::last.katakana}
     first_name_kana       {Gimei::first.katakana}
-    birthday_id           {Faker::Date.between(from: '1930-01-01', to: Date.today)}
+    birthday           {Faker::Date.between(from: '1930-01-01', to: Date.today)}
   end
 end
