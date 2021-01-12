@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: :new,:create,:edit,:update
+  before_action :authenticate_user!, only:[:new,:create,:edit,:update]
 
   def index
     @items = Item.all
@@ -28,7 +28,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
+      redirect_to item_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   private
