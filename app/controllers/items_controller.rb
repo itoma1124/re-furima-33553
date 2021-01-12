@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create,:edit,:update]
+  before_action :unmach_user, only: :edit
 
   def index
     @items = Item.all
@@ -41,5 +42,12 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :detail, :category_id, :status_id, :fare_id, :province_id, :shipment_day_id,
                                  :price)
           .merge(user_id: current_user.id)
+  end
+
+  def unmach_user
+    @item = Item.find(params[:id])
+    unless current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 end
