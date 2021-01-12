@@ -42,14 +42,14 @@ class ItemsController < ApplicationController
           .merge(user_id: current_user.id)
   end
 
-  def unmach_user
+  def set_item
     @item = Item.find(params[:id])
+  end
+
+  def unmach_user
     unless current_user.id == @item.user_id
       redirect_to root_path
     end
   end
-
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  
 end
