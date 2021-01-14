@@ -1,6 +1,7 @@
 class Province < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
+  has_many :addresses
 
   self.data = [
     { id: 0, name: '---' },
