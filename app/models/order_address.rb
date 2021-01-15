@@ -12,12 +12,12 @@ class OrderAddress
     validates :phone_num,    format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください。ハイフン(-)は使用しないでください。' }
     validates :user_id
     validates :item_id
-    validates :token
+    # validates :token
   end
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     # 住所の情報を保存
-    Address.create(postal_code: postal_code, province: province, city: city, address_line: address_line, building: building, order_id: order.id)
+    Address.create(postal_code: postal_code, province_id: province_id, city: city, address_line: address_line, building: building, phone_num: phone_num, order_id: order.id)
   end
 end
