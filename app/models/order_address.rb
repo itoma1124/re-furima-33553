@@ -10,8 +10,6 @@ class OrderAddress
     validates :city,         format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字を使用してください' }
     validates :address_line
     validates :phone_num,    format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください。ハイフン(-)は使用しないでください。' }
-    validates :user_id
-    validates :item_id
     validates :token
   end
 
