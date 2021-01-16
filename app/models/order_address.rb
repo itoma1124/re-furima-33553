@@ -9,8 +9,10 @@ class OrderAddress
     validates :province_id , numericality: { other_than: 0 } 
     validates :city,         format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字を使用してください' }
     validates :address_line
-    validates :phone_num,    format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください。ハイフン(-)は使用しないでください。' }
+    validates :phone_num,    format: { with: /\A[0-9]{7,11}\z/, message: '11桁以内の半角数字を使用してください。ハイフン(-)は使用しないでください' }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   def save
