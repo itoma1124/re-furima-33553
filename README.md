@@ -31,7 +31,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :orders
+- has_one :order
 
 ## orders テーブル
 | Column       | Type       | Options                        | 
@@ -53,7 +53,7 @@
 | address_line | string     | null: false                    |
 | building     | string     |                                |
 | phone_num    | string     | null: false                    |
-| purchase     | references | null: false, foreign_key: true |
+| order        | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchase
+- belongs_to :order

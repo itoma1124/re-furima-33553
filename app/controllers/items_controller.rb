@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except:[:index,:show]
-  before_action :set_item, only: [:edit, :show, :update, :destroy]
-  before_action :unmach_user, only: [:edit,:update,:destroy]
+  before_action :set_item, only: [:edit, :show, :update]
+  before_action :sold_out,only:[:edit,:update]
+  before_action :unmach_user, only: [:edit,:update]
 
   def index
     @items = Item.all
@@ -56,6 +57,12 @@ class ItemsController < ApplicationController
 
   def unmach_user
     unless current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
+  def sold_out
+    if @item.order.present?
       redirect_to root_path
     end
   end
