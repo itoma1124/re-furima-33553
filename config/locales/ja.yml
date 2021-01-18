@@ -20,7 +20,6 @@ ja:
        province_id: 発送元の地域
        shipment_day_id: 発送までの日数
 
-ja:
   activemodel:
     attributes:
      order_address:
@@ -31,4 +30,3 @@ ja:
        building: 建物名
        phone_num: 電話番号
        token: クレジットカード情報
-
