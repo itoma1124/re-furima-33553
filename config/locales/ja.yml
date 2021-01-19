@@ -20,13 +20,14 @@ ja:
        province_id: 発送元の地域
        shipment_day_id: 発送までの日数
 
-  activemodel:
-    attributes:
-     order_address:
-       postal_code: 郵便番号
-       province_id: 都道府県
-       city: 市区町村
-       address_line: 番地
-       building: 建物名
-       phone_num: 電話番号
-       token: クレジットカード情報
+
+  # activemodel:
+  #   attributes:
+  #    order_address:
+  #      postal_code: 郵便番号
+  #      province_id: 都道府県
+  #      city: 市区町村
+  #      address_line: 番地
+  #      building: 建物名
+  #      phone_num: 電話番号
+  #      token: クレジットカード情報
