@@ -95,14 +95,24 @@
     </form>
   </div>
   <div class="links">
-      <a href="/#" class="change-item-btn">
+    <% if @item.previous.present?%>
+      <a href= "/items/<%=@item.id - 1%>" class="change-item-btn">
         ＜ 前の商品
       </a>
-      <a href= "#" class="change-item-btn">
+    <% else %>
+     <a class="change-item-btn">
+    </a>
+    <% end %>
+    <% if @item.next.present?%>
+      <a href= "/items/<%=@item.id + 1%>" class="change-item-btn">
         後ろの商品 ＞
       </a>
+    <% else %>
+      <a class="change-item-btn">
+      </a>
+    <% end %>
   </div>
-  <a href=“#” class=‘another-item’><%= @item.category.name %>をもっと見る</a>
+  <a href=“” class=‘another-item’><%= @item.category.name %>をもっと見る</a>
   
 </div>
 
