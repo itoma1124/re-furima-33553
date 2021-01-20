@@ -80,20 +80,45 @@
   </div>
   <%# /商品の概要 %>
 
+  <%# コメント機能 %>
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+    <% if user_signed_in? %> 
+      <%= form_with model: [@item,@comment], local: true do |f| %>
+        <%= f.text_field :text,class:"comment-text"%>
+        <div class="comment-warn">
+          <div class="comment-message">
+            相手のことを考え丁寧なコメントを心がけましょう。
+            <br>
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          </div>
+          <%= f.submit "コメントする", class:"comment-btn"%>
+        </div>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <%# コメント一覧表示 %>
+    <div class="comment-all">
+      <div class = "comment-title">＜コメント一覧＞</div>
+      <div id='comment-list'>
+         <% @comments.reverse_each do |comment| %>
+          <% if comment.user_id == @item.user_id%>
+            <p class="list-right">
+              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>(出品者)：</strong>
+              <%= comment.text %>
+            </p>
+          <%else%>
+            <p class="list-left">
+              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+              <%= comment.text %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
+  <%# /コメント機能 %>
+
   <div class="links">
     <% if @item.previous.present?%>
       <a href= "/items/<%=@item.id - 1%>" class="change-item-btn">

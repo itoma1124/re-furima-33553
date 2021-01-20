@@ -141,7 +141,9 @@
 /* /商品の概要 */
 
 .comment-box {
-  width: 40vw;
+  width: 70vw;
+  min-width: 1200px;
+  padding: 10vh 15vw;
   background-color: #fff;
   margin: 5vh 0;
   text-align: center;
@@ -156,10 +158,15 @@
 }
 
 .comment-warn {
-  padding: 10px;
+  padding: 20px;
   font-size: 14px;
   margin: 10px 0px;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-message{
 }
 
 .comment-btn {
@@ -167,7 +174,7 @@
   background-color: #3CCACE;
   border: 1px solid #3CCACE;
   color: #fff;
-  width: 50%;
+  width: 30%;
   min-width: 150px;
   font-size: 18px;
   border-radius: 100px;
@@ -183,11 +190,40 @@
   margin: 10px 5px 0 0;
 }
 
+.comment-all{
+  margin: auto;
+  border: solid 2px #eeeeee;
+  padding-bottom: 30px;
+}
+.comment-title{
+  font-size: 25px;
+  margin-bottom: 5vh;
+  background-color: #eeeeee;
+}
+#comment-list{
+  margin: auto;
+  width: 60%;
+  padding: 30px,10px;
+}
+
+.list-right{
+  text-decoration: none;
+  text-align: right;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.list-left{
+  text-decoration: none;
+  text-align: left;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
 .links {
   display: flex;
   justify-content: space-between;
   width: 50vw;
-
 }
 
 .change-item-btn {
