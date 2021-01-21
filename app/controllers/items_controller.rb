@@ -24,8 +24,10 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
-    gon.current_user = current_user.nickname
-    gon.item_user = @item.user.nickname
+    if user_signed_in?
+      gon.current_user = current_user.nickname
+      gon.item_user = @item.user.nickname
+    end
   end
 
   def edit

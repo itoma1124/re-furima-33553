@@ -22,7 +22,8 @@ class User < ApplicationRecord
   end
 
   # Association
-  has_many :items
+  has_many :items,dependent: :destroy
   has_many :orders
   has_many :comments
+  has_many :favorites,dependent: :destroy
 end

@@ -67,6 +67,8 @@
         </tr>
       </tbody>
     </table>
+    <%# お気に入りボタン %>
+    <% if user_signed_in? && @item.order.blank?%> 
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
@@ -77,12 +79,13 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
+    <% end %>
   </div>
   <%# /商品の概要 %>
 
   <%# コメント機能 %>
   <div class="comment-box">
-    <% if user_signed_in? %> 
+    <% if user_signed_in? && @item.order.blank?%> 
       <%= form_with model: [@item,@comment], local: true do |f| %>
         <%= f.text_field :text,class:"comment-text"%>
         <div class="comment-warn">
@@ -94,8 +97,10 @@
           <%= f.submit "コメントする", class:"comment-btn"%>
         </div>
       <% end %>
-    <% else %>
+    <% elsif @item.order.blank?%>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% else %>
+      <strong><p>※※※ この商品は売却済みです ※※※</p></strong>
     <% end %>
     <%# コメント一覧表示 %>
     <div class="comment-all">
