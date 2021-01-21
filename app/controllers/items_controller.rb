@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except:[:index,:show]
-  before_action :set_item, only: [:edit, :show, :update]
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :sold_out,only:[:edit,:update]
   before_action :unmach_user, only: [:edit,:update]
 
@@ -22,6 +22,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+    gon.current_user = current_user.nickname
+    gon.item_user = @item.user.nickname
   end
 
   def edit
