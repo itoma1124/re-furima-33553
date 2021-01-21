@@ -10,14 +10,22 @@ consumer.subscriptions.create("CommentChannel", {
   },
 
   received(data) {
-    const nickname = document.getElementById('user-nickname')
-    const html = `<p>${nickname}:${data.content.text}</p>`;
-    console.log(html);
-    const comments = document.getElementById('comment-list');
-    console.log(comments);
-    const newComment = document.getElementById('comment_text');
-    console.log(newComment);
-    comments.insertAdjacentHTML('afterbegin', html);
-    // newComment.value='';
+    const current_user = gon.current_user
+    const item_user = gon.item_user
+
+
+    if (current_user == item_user) {
+      const html = `<p class="list-right">${data.content.text}：${current_user}(出品者)</p>`;
+      const comments = document.getElementById('comment-list');
+      const newComment = document.getElementById('comment_text');
+      comments.insertAdjacentHTML('afterbegin', html);
+      newComment.value='';
+    } else {
+      const html = `<p class="list-left">${current_user}：${data.content.text}</p>`;
+      const comments = document.getElementById('comment-list');
+      const newComment = document.getElementById('comment_text');
+      comments.insertAdjacentHTML('afterbegin', html);
+      newComment.value='';
+    }
   }
 });

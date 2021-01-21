@@ -43,27 +43,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value">出品者　　　　：<%= @item.user.nickname %></td>
+          <td class="detail-value"><%= @item.user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value">カテゴリー　　：<%= @item.category.name %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value">商品の状態　　：<%= @item.status.name %></td>
+          <td class="detail-value"><%= @item.status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value">配送料の負担　：<%= @item.fare.name %></td>
+          <td class="detail-value"><%= @item.fare.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value">発送元の地域　：<%= @item.province.name %></td>
+          <td class="detail-value"><%= @item.province.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value">発送日の目安　：<%= @item.shipment_day.name %></td>
+          <td class="detail-value"><%= @item.shipment_day.name %></td>
         </tr>
       </tbody>
     </table>
@@ -102,14 +102,14 @@
       <div class = "comment-title">＜コメント一覧＞</div>
       <div id='comment-list'>
          <% @comments.reverse_each do |comment| %>
-          <% if comment.user_id == @item.user_id%>
-            <p class="list-right">
-              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>(出品者)：</strong>
-              <%= comment.text %>
-            </p>
+          <% if comment.user_id == @item.user_id %>
+            <li class="list-right">
+              <p class="comment-message"><%= comment.text %></p>
+              <p class="comment-name">:<%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>(出品者)</p>
+            </li>
           <%else%>
             <p class="list-left">
-              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+              <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>:
               <%= comment.text %>
             </p>
           <% end %>
