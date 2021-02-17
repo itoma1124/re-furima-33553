@@ -8,6 +8,7 @@ FactoryBot.define do
     province_id      { rand(1..47) }
     shipment_day_id  { rand(1..3) }
     price            { rand(300..999_999) }
+    user_id          { user.id}
     association :user
 
     after(:build) do |item|
